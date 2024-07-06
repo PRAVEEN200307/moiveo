@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { navigation } from "../contants/navigation";
 
 // search Icons
@@ -9,9 +9,13 @@ import { IoIosSearch } from "react-icons/io";
 import logo from "../assets/logo.png";
 import user from "../assets/user.png";
 
+
 const Header = () => {
-  const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
+  const location =useLocation();
+
+  const removeSpace = location?.search?.slice(3)?.split("%20")?.join(' ');
+  const [searchInput, setSearchInput] = useState(removeSpace);
 
   useEffect(() => {
     if(searchInput){
@@ -36,10 +40,6 @@ const Header = () => {
               <div key={nav.label}>
                 <Link
                   to={nav.href}
-                  // className={({ isActive }) =>
-                  //   `px-2 hover:text-neutral-100 ${
-                  //     isActive && "text-neutral-100"
-                  // }`}
                   className="px-2 hover:text-neutral-100 "
                 >
                   {nav.label}
@@ -79,3 +79,6 @@ const Header = () => {
 };
 
 export default Header;
+
+
+// 3:28

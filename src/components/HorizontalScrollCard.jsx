@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import Card from "./Card";
 import { FaAngleRight, FaAngleLeft } from "react-icons/fa6";
 
-const HorizontalScrollCard = ({ data = [], heading,trending=false }) => {
+const HorizontalScrollCard = ({ data = [], heading,trending=false,media }) => {
   const containerRef = useRef();
 
   // handleNext
